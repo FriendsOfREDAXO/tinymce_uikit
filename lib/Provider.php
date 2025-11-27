@@ -204,6 +204,27 @@ class Provider
             $toolbar = 'styles ' . $toolbar;
         }
 
+        // Handle External Plugins
+        // We need to inject external_plugins configuration for custom plugins (like snippets, link_yform, etc.)
+        // otherwise TinyMCE tries to load them from the default path and fails (404).
+        $pluginList = preg_split('/\s+/', $plugins, -1, PREG_SPLIT_NO_EMPTY);
+        
+        // Trigger TINYMCE_PROFILE_OPTIONS to get registered external plugins
+        $options = \rex_extension::registerPoint(new \rex_extension_point('TINYMCE_PROFILE_OPTIONS', [
+            'plugins' => [],
+            'toolbar' => [],
+            'external_plugins' => []
+        ]));
+        
+        $externalPlugins = [];
+        if (isset($options['external_plugins']) && is_array($options['external_plugins'])) {
+            foreach ($pluginList as $pluginName) {
+                if (isset($options['external_plugins'][$pluginName])) {
+                    $externalPlugins[$pluginName] = $options['external_plugins'][$pluginName];
+                }
+            }
+        }
+
         // Append overrides to extra
         // We add these to the END of the extra string to override any previous definitions
         
@@ -218,6 +239,10 @@ class Provider
         // (in case the base profile defined them in extra, which would take precedence over columns)
         $extra[] = 'toolbar: ' . json_encode($toolbar);
         $extra[] = 'plugins: ' . json_encode($plugins);
+        
+        if (!empty($externalPlugins)) {
+            $extra[] = 'external_plugins: ' . json_encode($externalPlugins);
+        }
 
         $profileData = [
             'extra' => implode(",\n", $extra),
