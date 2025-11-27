@@ -1,43 +1,44 @@
-# TinyMCE UIkit AddOn für REDAXO
+# TinyMCE UIkit
 
-Dieses AddOn erweitert den TinyMCE Editor um ein vorgefertigtes Profil für das [UIkit 3 Framework](https://getuikit.com/). Es stellt sicher, dass Inhalte im Editor korrekt mit UIkit-Styles dargestellt werden und bietet passende Formate für Überschriften, Texte, Listen und Blöcke an.
+Dieses AddOn generiert ein TinyMCE-Profil, das speziell für die Verwendung mit dem **UIkit 3** Framework optimiert ist. Es ermöglicht Redakteuren, UIkit-Komponenten und Utility-Klassen direkt im WYSIWYG-Editor auszuwählen.
 
 ## Funktionen
 
-*   **Automatisches Profil:** Erstellt bei der Installation automatisch ein TinyMCE-Profil namens `uikit`.
-*   **CSS-Integration:** Bindet das UIkit CSS direkt in den Editor ein, sodass das Styling im Backend dem Frontend entspricht (WYSIWYG).
-*   **Format-Vorlagen:** Bietet eine umfangreiche Liste an UIkit-Klassen im "Formate"-Dropdown des Editors (z.B. `uk-heading-primary`, `uk-text-lead`, `uk-list-divider`, `uk-alert-primary`).
-*   **Dark Mode Support:** Unterstützt den REDAXO Dark Mode im Backend.
-*   **Konfigurierbar:** Die URL zur UIkit CSS-Datei kann in den Einstellungen angepasst werden (z.B. für lokale Einbindung oder spezifische Versionen).
+- **Profil-Vererbung:** Erstellt ein neues Profil basierend auf einem existierenden Profil (z.B. `full` oder `default`). Alle Plugins und Toolbar-Einstellungen des Basis-Profils bleiben erhalten.
+- **UIkit Stile:** Fügt dem Editor umfangreiche Formatvorlagen hinzu:
+    - **Überschriften:** Primary, Hero, Divider, Bullet, Line
+    - **Text:** Lead, Meta, Größen, Gewichtung, Transformation, Farben
+    - **Listen:** Disc, Circle, Square, Decimal, Divider, Striped
+    - **Buttons:** Default, Primary, Secondary, Danger, Text, Link (in verschiedenen Größen)
+    - **Badges & Labels**
+    - **Bilder:** Rounded, Circle, Shadows
+    - **Hintergründe:** Muted, Primary, Secondary
+    - **Tabellen:** Striped, Hover, Divider, Small
+    - **Blöcke:** Alerts (Primary, Success, Warning, Danger), Cards
+    - **Utility:** Floats, Display, Overflow
+- **Editor-Optimierung:**
+    - Lädt das UIkit CSS direkt in den Editor (konfigurierbar).
+    - Verhindert störende Fokus-Rahmen (Outlines) von UIkit im Editor-Fenster.
+    - Fügt automatisch den `styles`-Button zur Toolbar hinzu, falls dieser im Basis-Profil fehlt.
 
-## Installation
+## Installation & Nutzung
 
-1.  Laden Sie das AddOn herunter und entpacken Sie es in den Ordner `redaxo/src/addons/tinymce_uikit`.
-2.  Melden Sie sich im REDAXO Backend an.
-3.  Gehen Sie zu **Installieren & Aktualisieren**.
-4.  Installieren und aktivieren Sie das AddOn `TinyMCE UIkit`.
+1. AddOn installieren und aktivieren.
+2. Im Backend unter **TinyMCE > UIkit** die Einstellungen aufrufen.
+3. **Basis-Profil** wählen (z.B. `full`).
+4. **Ziel-Profil Name** festlegen (Standard: `uikit`).
+5. **UIkit CSS URL** prüfen (Standard ist CDN, kann auf lokale Datei geändert werden).
+6. Speichern klicken.
 
-Nach der Installation finden Sie im TinyMCE-Addon unter "Profile" einen neuen Eintrag `uikit`.
+Das AddOn generiert nun das Profil. Dieses kann anschließend in den Moduleinstellungen oder im TinyMCE-Feld ausgewählt werden.
 
-## Konfiguration
-
-Unter **TinyMCE UIkit > Einstellungen** können Sie die URL zur UIkit CSS-Datei anpassen.
-
-*   **Standard:** Verwendet das jsDelivr CDN (`https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css`).
-*   **Lokal:** Sie können einen Pfad zu einer lokalen Datei angeben, z.B. `/assets/addons/project/css/uikit.min.css`.
-
-Nach dem Speichern der Einstellungen wird das TinyMCE-Profil automatisch aktualisiert.
-
-## Nutzung
-
-1.  Weisen Sie das Profil `uikit` einem Textarea-Feld zu (z.B. in einem Modul oder via MForm).
-    *   Beispiel Modul-Input:
-        ```php
-        <textarea class="form-control tiny-editor" data-profile="uikit" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
-        ```
-2.  Im Editor sehen Sie nun die UIkit-Styles.
-3.  Über das Menü **Formate** können Sie UIkit-spezifische Klassen auf Ihre Inhalte anwenden.
+> **Hinweis:** Wenn Änderungen am Basis-Profil vorgenommen werden, muss das UIkit-Profil hier erneut gespeichert werden, um die Änderungen zu übernehmen.
 
 ## Lizenz
 
-MIT Lizenz, siehe [LICENSE.md](LICENSE.md) (falls vorhanden) oder `package.yml`.
+MIT Lizenz, siehe [LICENSE](LICENSE)
+
+## Credits
+
+- [Thomas Skerbis](https://github.com/skerbis)
+- [FriendsOfREDAXO](https://github.com/FriendsOfREDAXO)
