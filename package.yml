@@ -1,0 +1,14 @@
+package: tinymce_uikit
+version: '1.0.0'
+author: 'Friends Of REDAXO'
+supportpage: https://github.com/FriendsOfREDAXO/tinymce_uikit
+
+requires:
+  redaxo: ^5.10
+  tinymce: ^8.0
+
+pages:
+  tinymce/uikit:
+    title: 'UIkit'
+    perm: admin
+    icon: rex-icon fa-magic

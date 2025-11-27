@@ -1,0 +1,7 @@
+tinymce_uikit_title = TinyMCE UIkit
+tinymce_uikit_settings = Einstellungen
+tinymce_uikit_css_url = UIkit CSS URL
+tinymce_uikit_css_url_notice = Geben Sie hier die URL zur UIkit CSS-Datei an (z.B. /assets/addons/project/css/uikit.min.css oder eine CDN-URL).
+tinymce_uikit_profile_updated = Das TinyMCE-Profil "uikit" wurde aktualisiert.
+tinymce_uikit_profile_created = Das TinyMCE-Profil "uikit" wurde erstellt.
+tinymce_uikit_config_saved = Einstellungen gespeichert.
